@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Recommender System</title>
+    <meta name="description" content="Discover your next favorite anime using our advanced recommendation engine.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Anime Engine</h1>
+
+    <div class="container">
+        
+        <!-- Auth Section -->
+        <div id="auth-section" class="auth-grid">
+            
+            <div class="glass-panel">
+                <h2>Login</h2>
+                <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    Welcome back! Log in to view your ratings and get recommendations.
+                </p>
+                <form id="login-form">
+                    <input type="text" id="login-username" placeholder="Username" required autocomplete="off">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+
+            <div class="glass-panel">
+                <h2>Create Account</h2>
+                <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    New here? Register a new account to start building your anime profile.
+                </p>
+                <form id="register-form">
+                    <input type="text" id="register-username" placeholder="Username" required autocomplete="off">
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="hidden">
+            
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="display-username">User</span></h2>
+                <button id="logout-btn" style="width: auto; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Logout</button>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs-container">
+                <button class="tab-btn active" data-target="tab-ratings">My Ratings</button>
+                <button class="tab-btn" data-target="tab-rate">Rate Anime</button>
+                <button class="tab-btn" data-target="tab-recom">Get Recommendations</button>
+            </div>
+
+            <!-- Tab Content: My Ratings -->
+            <div id="tab-ratings" class="tab-content active glass-panel">
+                <h2>Your Ratings</h2>
+                <div id="ratings-list" class="ratings-list-scroll">
+                    <p style="color: var(--text-muted);">You haven't rated any anime yet.</p>
+                </div>
+            </div>
+
+            <!-- Tab Content: Rate Anime -->
+            <div id="tab-rate" class="tab-content hidden glass-panel">
+                <h2>Add Rating</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Search for an anime, click its poster, and give it a score!</p>
+                <form id="rate-form">
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="anime-title-input" placeholder="Search Anime (e.g. Dr. Stone)" required autocomplete="off">
+                        <div id="rate-dropdown" class="search-results-dropdown hidden"></div>
+                    </div>
+                    <input type="number" id="rating-input" placeholder="Score (1-10)" min="1" max="10" required>
+                    <button type="submit">Submit Rating</button>
+                </form>
+            </div>
+
+            <!-- Tab Content: Get Recommendations -->
+            <div id="tab-recom" class="tab-content hidden glass-panel">
+                <h2>Get Recommendations</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Select an anime you loved to find similar shows!</p>
+                <form id="recom-form">
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="recom-anime-input" placeholder="Search Target Anime" required autocomplete="off">
+                        <div id="recom-dropdown" class="search-results-dropdown hidden"></div>
+                    </div>
+                    <button type="submit">Discover Anime</button>
+                </form>
+
+                <div id="recommendations-container" class="hidden" style="margin-top: 2rem;">
+                    <h3>Top Recommendations</h3>
+                    <div id="recommendations-grid" class="recom-grid">
+                        <!-- Anime cards injected here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="toast">Message</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
