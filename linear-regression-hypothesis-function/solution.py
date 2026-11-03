@@ -16,9 +16,11 @@ def linear(input: np.ndarray, weight: np.ndarray, bias: np.ndarray | None = None
     # up with input for matrix multiplication.
     # Handle bias=None (no bias term) the same way PyTorch does.
 
-    output = input @ weight.T
+    if bias is None:
+        outputs= input@ weight.T 
 
-    if bias is not None:
-        output = output + bias
 
-    return output
+    else:
+        outputs= input@ weight.T + bias 
+
+    return outputs
